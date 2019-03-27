@@ -113,9 +113,8 @@ class ChatServer{
 		int port = p->port;
 		delete p;
 		pthread_detach(pthread_self());
-		//  haiyou yizhongxiefa shouji zhong de zhaopai 
 		Request rq;                                                
-		Util::RecvRequest(sock, rq); //client fa yige request zhe bian jieshou ranhou chuli 	
+		Util::RecvRequest(sock, rq); 	
 		Json::Value root;
 		LOG(rq.text, NORMAL);
 		Util::UnSeralizer(rq.text,root);
