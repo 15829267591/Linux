@@ -85,13 +85,13 @@ class ChatClient{
 		Json::Value root;
 		root["id"] = id;
 		root["passwd"] = passwd;
-		Util::Seralizer(root,rq.text);//weishenmeshi root  na canshu weizhi weishenme shi &root
+		Util::Seralizer(root,rq.text);
 		
 		rq.content_length = "Content-Length: ";
 		rq.content_length+=Util::IntToString((rq.text).size());
 		rq.content_length += "\n";
 
-		Util::SendRequest(tcp_sock,rq); //?
+		Util::SendRequest(tcp_sock,rq); 
 		unsigned int result = 0; // 服务器那边注册完，给一个回应，接收这个回应。
 		recv(tcp_sock, &result, sizeof(result), 0);     //recv(tcp_sock, &id, sizeof(id), 0);  此时通信已经结束，先不做错误判断的话 
 		//短链接。注册完不一定就要登陆
